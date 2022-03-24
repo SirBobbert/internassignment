@@ -1,6 +1,3 @@
-# https://www.alphavantage.co/documentation/
-
-
 import requests
 import pandas as pd
 import numpy as np
@@ -27,6 +24,7 @@ class DisplaySingleStockChange:
         else:
             raise TypeError('Only integers are allowed')
 
+    # Get data that matches the chosen input
     def get_data(self):
         url = 'https://www.alphavantage.co/query?function=' + self.period[0] + '&symbol=' + self.company[0] + '&outputsize=full&apikey=RNAMU4MD6H604GQL'
         r = requests.get(url)
