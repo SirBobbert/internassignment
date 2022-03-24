@@ -1,32 +1,21 @@
-# https://www.alphavantage.co/documentation/
-
-
-import requests
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
 
-# API to data
-url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=TSCO.LON&outputsize=full&apikey=RNAMU4MD6H604GQL'
-r = requests.get(url)
-data = r.json()
+from util import display_single_stock_changes as single_stock
 
-# Takes the API data and converts it into a dataframe
-df = pd.DataFrame.from_dict(data['Time Series (Daily)'])
+# LIST OF COMPANIES ['Company code', 'Name']
+# TESCO PLC (London Stock Exchange)
+tesco = ['TSCO.LON', 'Tesco']
+# Shopify Inc (Canada - Toronto Stock Exchange)
+shopify = ['SHOP.TRT', 'Shopify Inc']
+# GreenPower Motor Company Inc (Canada - Toronto Venture Exchange)
+greenpower = ['GPV.TRV', 'GreenPower Motor Company Inc']
+# Daimler AG (Germany - XETRA)
+daimler = ['DAI.DEX', 'Daimler AG']
 
-# Initializing arrays for plot
-x_values = []
-y_values = []
+# Daily, weekly or monthly
+daily = ['TIME_SERIES_DAILY', 'Time Series (Daily)', 'Daily Changes']
+weekly = ['TIME_SERIES_WEEKLY', 'Weekly Time Series', "Weekly Changes"]
+monthly = ['TIME_SERIES_MONTHLY', 'Monthly Time Series', 'Monthly Changes']
 
-# Shows the opening value for each day
-for key in data['Time Series (Daily)']:
-    x_values.append(key)
-    y_values.append(data['Time Series (Daily)'][key]['1. open'])
-
-# Converts the y_values array to float
-# Displays the plot
-plt.plot([float(i) for i in y_values])
-plt.ylabel('Exchange rate')
-plt.xlabel('Days')
-plt.grid()
-plt.show()
+# Company, period, n_time
+single_stock.DisplaySingleStockChange().display_graph()
