@@ -1,6 +1,3 @@
-# api key
-# RNAMU4MD6H604GQL
-
 # https://www.alphavantage.co/documentation/
 
 
