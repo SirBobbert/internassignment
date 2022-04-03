@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-class DisplaySingleStockChange:
+class DisplaySingleStock:
 
     # Default values for if there is no values parsed
     def __init__(self, company=['TSCO.LON', 'Tesco'], period=['TIME_SERIES_DAILY', 'Time Series (Daily)', 'Daily Changes'], n_time=30):
@@ -38,6 +38,7 @@ class DisplaySingleStockChange:
         data = self.get_data()
         period = self.period
         company = self.company
+        n_time = self.n_time
 
         # Initializing arrays for plot
         x_values = []
@@ -50,15 +51,15 @@ class DisplaySingleStockChange:
             y_values.append(data[period[1]][key]['4. close'])
 
         # Slices the array, so it only shows from current to n_time prior
-        days = x_values[0:self.n_time]
-        values = y_values[0:self.n_time]
+        days = x_values[0:n_time]
+        values = y_values[0:n_time]
 
         # Reverses the arrays, so it will be displayed correctly in the plots
         days.reverse()
         values.reverse()
 
         # Prints the graph
-        plt.rcParams["figure.figsize"] = (20, 15)
+        plt.rcParams["figure.figsize"] = (15, 15)
         plt.plot(days, [float(i) for i in values])
         plt.title(period[2] + ' for ' + company[1])
         plt.xticks(rotation=60)

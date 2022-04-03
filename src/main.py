@@ -1,6 +1,6 @@
 import pandas as pd
 
-from util import display_single_stock_changes, compare_stock_changes
+from util import display_single_stock, compare_stocks
 
 # LIST OF COMPANIES ['Company code', 'Name']
 # TESCO PLC (London Stock Exchange)
@@ -18,5 +18,7 @@ weekly = ['TIME_SERIES_WEEKLY', 'Weekly Time Series', "Weekly Changes"]
 monthly = ['TIME_SERIES_MONTHLY', 'Monthly Time Series', 'Monthly Changes']
 
 # Company, period, n_time
-#display_single_stock_changes.DisplaySingleStockChange().display_graph()
-print(compare_stock_changes.CompareMultipleStockChanges(tesco, shopify, period=daily, n_time=30).get_multiple_data())
+#display_single_stock.DisplaySingleStock(tesco, daily, 55).display_graph()
+
+# Company1, company2, period, n_time
+compare_stocks.CompareStocks(daimler, tesco, daily, 55).display_graph()
