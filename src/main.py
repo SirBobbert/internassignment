@@ -21,4 +21,5 @@ monthly = ['TIME_SERIES_MONTHLY', 'Monthly Time Series', 'Monthly Changes']
 #display_single_stock.DisplaySingleStock(tesco, daily, 55).display_graph()
 
 # Company1, company2, period, n_time
-compare_stocks.CompareStocks(daimler, tesco, daily, 55).display_graph()
+#compare_stocks.CompareStocks(daimler, tesco, daily, 55).display_graph()
+
