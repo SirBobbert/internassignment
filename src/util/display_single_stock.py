@@ -6,25 +6,17 @@ import matplotlib.pyplot as plt
 
 class DisplaySingleStock:
 
+    # Constructor
+    # Example: tesco, shopify, monthly, 30
     # Default values for if there is no values parsed
-    def __init__(self, company=['TSCO.LON', 'Tesco'], period=['TIME_SERIES_DAILY', 'Time Series (Daily)', 'Daily Changes'], n_time=30):
+    def __init__(self, company=['TSCO.LON', 'Tesco'],
+                 period=['TIME_SERIES_DAILY', 'Time Series (Daily)', 'Daily Changes'], n_time=30):
 
-        if type(company) is list:
-            self.company = company
-        else:
-            raise TypeError('Only lists are allowed')
+        self.company = company
+        self.period = period
+        self.n_time = n_time
 
-        if type(period) is list:
-            self.period = period
-        else:
-            raise TypeError('Only lists are allowed')
-
-        if type(n_time) is int:
-            self.n_time = n_time
-        else:
-            raise TypeError('Only integers are allowed')
-
-    # Get data that matches the chosen input
+    # Get dataset from the API
     def get_data(self):
         url = 'https://www.alphavantage.co/query?function=' + self.period[0] + '&symbol=' + self.company[0] + '&outputsize=full&apikey=RNAMU4MD6H604GQL'
         r = requests.get(url)
@@ -58,11 +50,20 @@ class DisplaySingleStock:
         days.reverse()
         values.reverse()
 
-        # Prints the graph
+        # Graph size
         plt.rcParams["figure.figsize"] = (15, 15)
-        plt.plot(days, [float(i) for i in values])
-        plt.title(period[2] + ' for ' + company[1])
+
+        # Plots the data
+        plt.plot(days, [float(i) for i in values], label=company[1])
+
+        # Rotates the x-value labels
         plt.xticks(rotation=60)
+
+        # Y-value labels
         plt.ylabel('Exchange rate')
+
+        # Eye candy
         plt.grid()
+
+        # Prints the graph
         plt.show()
