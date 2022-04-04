@@ -11,4 +11,4 @@ Jeg har brugt følgende modules:
   Requests
   
 PROJEKT START
-  Når projektet åbenes op skal du navigere til main klassen og trykke run. Dette kræver at de nævnte modules er installerede.
+  Projektet køres lokalt. Når projektet åbenes op skal du navigere til main klassen og trykke run. Dette kræver at de nævnte modules er installerede.
