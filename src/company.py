@@ -5,7 +5,6 @@ import pandas as pd
 # Creates a company dataframe from lists.
 # Used for the user and for the API
 def companies_list():
-
     # TESCO PLC (London Stock Exchange)
     tesco = ['TSCO.LON', 'Tesco']
 
@@ -21,6 +20,7 @@ def companies_list():
     combined_list = pd.DataFrame({'Tesco': tesco, 'Shopify': shopify, 'Greenpower': greenpower, 'Daimler': daimler})
 
     return combined_list
+
 
 # Prints every company name
 def show_company_names():
